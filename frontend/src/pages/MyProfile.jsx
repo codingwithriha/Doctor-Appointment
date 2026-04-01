@@ -113,6 +113,7 @@ const MyProfile = () => {
                   <input
                     className="bg-gray-50"
                     value={userData.address?.line1}
+                    
                     type="text"
                     onChange={(e) =>
                       setUserData((prev) => ({

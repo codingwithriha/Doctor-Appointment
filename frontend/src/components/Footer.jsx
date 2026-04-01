@@ -36,8 +36,9 @@ const Footer = () => {
       <div>
         {/* -----------copy right text--------- */}
         <hr />
-        <p className="py-5 text-sm text-center">
-          Copyright © 2024 - All Right Reserved.
+        <p className="py-5 text-sm text-center ">
+          Copyright © {new Date().getFullYear()}{" "}
+          <a className="hover:text-primary font-bold" href="https://www.linkedin.com/in/riha-shahzadi/">Riha Shahzadi</a>.
         </p>
       </div>
     </div>

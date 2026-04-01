@@ -31,7 +31,7 @@ const Doctors = () => {
             }`}
             onClick={() => setShowFilter((prev) => !prev)}
           >
-            Filter
+            Filter                                                                                                                         
           </button>
           <div
             className={`flex-col gap-4 text-sm text-gray-600  ${
