@@ -384,7 +384,7 @@ Recommended platforms:
 
 # 👩‍💻 Author
 
-## Riha Shehzadi
+## Riha Shahzadi
 
 💼 Software Engineer & MERN Stack Developer
 
