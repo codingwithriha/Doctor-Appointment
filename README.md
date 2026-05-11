@@ -378,7 +378,7 @@ Recommended platforms:
 * 🔍 Appointment filtering & pagination
 * 🌙 Dark mode support
 * 📱 Mobile app version
-* 🤖 AI-powered doctor recommendations
+* 🤖 AI powered doctor recommendations
 
 ---
 
