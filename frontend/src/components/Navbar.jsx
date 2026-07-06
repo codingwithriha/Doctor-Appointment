@@ -22,7 +22,7 @@ const Navbar = () => {
   };
 
   const handleAdminPanel = () => {
-    window.open("http://localhost:5174/", "_blank");
+    window.open("https://doctor-appointment-prescripto-admin.vercel.app/", "_blank");
   };
 
   return (
