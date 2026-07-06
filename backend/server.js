@@ -20,8 +20,8 @@ app.use(
     origin: [
       "http://localhost:5174",
       "http://localhost:5173",
-      "https://doctor-appointment-prescripto-frontend.vercel.app/",
-      "https://doctor-appointment-prescripto-admin.vercel.app/",
+      "https://doctor-appointment-prescripto-frontend.vercel.app",
+      "https://doctor-appointment-prescripto-admin.vercel.app",
     ],
     credentials: true, 
   })
