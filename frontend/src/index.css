@@ -1,28 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Mogra&family=Montserrat&family=Outfit:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
+
 
 @theme {
   --color-primary: #5f6FFF;
-  --color-secondary: #facc15;
-  --font-display: 'Poppins', sans-serif;
-  --spacing-card: 1.5rem;
-}
+  --color-primary-foreground: hsl(220, 15%, 95%);
 
-* {
+  /* Custom grid columns */
+  --grid-cols-auto: repeat(auto-fill, minmax(200px, 1fr));
+}
+*{
   font-family: Outfit;
-}
-/* for uderline effect for active tab */
-.active hr {
-  @apply block;
+ }
+
+.active hr{
+  @apply block
 }
 
-/* to hide the scroll bar */
-::-webkit-scrollbar {
-  @apply hidden;
+::-webkit-scrollbar{
+  @apply hidden
 }
 
-@media (max-width: 740px) {
-  .active p {
-    @apply text-white bg-primary;
+@media (max-width:740px){
+  .active p{
+    @apply text-white bg-primary
   }
 }
