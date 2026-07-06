@@ -178,7 +178,7 @@ Make sure you have installed:
 ## 🚀 Clone Repository
 
 ```bash
-git clone https://github.com/your-username/doctor-appointment-booking-system.git
+git clone https://github.com/codingwithriha/doctor-appointment-booking-system.git
 cd doctor-appointment-booking-system
 ```
 
@@ -194,7 +194,7 @@ npm install
 ## Create `.env` file
 
 ```env
-PORT=8000
+PORT=4000
 MONGODB_URI=your_mongodb_uri
 JWT_SECRET=your_secret_key
 
@@ -224,7 +224,7 @@ npm install
 ## Create `.env` file
 
 ```env
-VITE_BACKEND_URL=http://localhost:8000
+VITE_BACKEND_URL=http://localhost:4000
 ```
 
 ## Run Frontend
@@ -245,7 +245,7 @@ npm install
 ## Create `.env` file
 
 ```env
-VITE_BACKEND_URL=http://localhost:8000
+VITE_BACKEND_URL=http://localhost:4000
 ```
 
 ## Run Admin Portal
