@@ -1,4 +1,4 @@
-# 🏥 Doctor Appointment Booking System (MERN Stack)
+# 🏥 Prescripto - Doctor Appointment Booking System (MERN Stack)
 
 ![License](https://img.shields.io/badge/License-ISC-blue.svg)
 ![MERN](https://img.shields.io/badge/Stack-MERN-success)
@@ -7,16 +7,35 @@
 ![Node.js](https://img.shields.io/badge/Backend-Node.js-339933)
 ![Express](https://img.shields.io/badge/API-Express-black)
 
-A modern and scalable **Doctor Appointment Booking System** built with the **MERN Stack** — MongoDB, Express.js, React.js, and Node.js. This platform simplifies the healthcare appointment process by enabling patients to book appointments online while allowing doctors and administrators to efficiently manage schedules, profiles, and appointments.
+A modern and scalable **Doctor Appointment Booking System** built with the **MERN Stack**  MongoDB, Express.js, React.js, and Node.js. This platform simplifies the healthcare appointment process by enabling patients to book appointments online while allowing doctors and administrators to efficiently manage schedules, profiles, and appointments.
 
 The system includes:
 
 * 🔐 Secure JWT Authentication
 * 👨‍⚕️ Role-Based Dashboards (Admin, Doctor, User)
 * ☁️ Cloudinary Image Upload Integration
+* 💳 Stripe Payment Integration
 * 📱 Fully Responsive React Frontend
 * 📊 Appointment Management & Analytics
 * ⚡ Optimized MERN Architecture
+
+---
+
+# 🔗 Live Demo
+
+| App | Link |
+|---|---|
+| 🌐 Patient Frontend | [doctor-appointment-prescripto-frontend.vercel.app](https://doctor-appointment-prescripto-frontend.vercel.app) |
+| 🛠️ Admin / Doctor Panel | [doctor-appointment-prescripto-admin.vercel.app](https://doctor-appointment-prescripto-admin.vercel.app) |
+| ⚙️ Backend API | [doctor-appointment-prescripto-backend.vercel.app](https://doctor-appointment-prescripto-backend.vercel.app) |
+
+---
+## Admin Credentials
+
+**Email:** admin@example.com  
+**Password:** admin123
+
+> These credentials are provided for testing purposes only.
 
 ---
 
@@ -45,7 +64,7 @@ The system includes:
 * Book appointments seamlessly
 * View upcoming and previous appointments
 * Cancel appointments easily
-* Secure payment workflow (expandable)
+* Secure Stripe-powered payment workflow
 * Responsive UI for mobile and desktop users
 
 ## 🩺 Doctor Features
@@ -82,6 +101,7 @@ The system includes:
 * Tailwind CSS for modern UI styling
 * Axios integration for API communication
 * React Router DOM for routing
+* Stripe Elements for secure checkout
 * Toast notifications for enhanced UX
 * Clean and reusable component structure
 
@@ -90,28 +110,29 @@ The system includes:
 # 📂 Project Structure
 
 ```bash
-📦 DOCTOR-APPOINTMENT-SYSTEM
+📦 PRESCRIPTO-DOCTOR-BOOKING-SYSTEM
 ├── backend
-│   ├── config/
+│   ├── config/          # MongoDB & Cloudinary configs
 │   ├── controllers/
-│   ├── middlewares/
-│   ├── models/
-│   ├── routes/
+│   ├── middlewares/     # authUser, authAdmin, authDoctor, multer
+│   ├── models/          # userModel, doctorModels, appointmentModel
+│   ├── routes/          # userRoute, doctorRoute, adminRoute
 │   ├── .env
 │   ├── server.js
+│   ├── vercel.json
 │   └── package.json
 │
-├── admin-portal
+├── admin
 │   ├── public/
 │   ├── src/
 │   │   ├── assets/
-│   │   ├── components/
-│   │   ├── context/
-│   │   ├── layout/
-│   │   ├── pages/
+│   │   ├── components/  # Navbar, Sidebar
+│   │   ├── context/     # AdminContext, DoctorContext, AppContext
+│   │   ├── pages/       # Admin/, Doctor/, Login
 │   │   ├── App.jsx
 │   │   └── main.jsx
 │   ├── .env
+│   ├── vercel.json
 │   ├── vite.config.js
 │   └── package.json
 │
@@ -119,15 +140,17 @@ The system includes:
 │   ├── public/
 │   ├── src/
 │   │   ├── assets/
-│   │   ├── components/
-│   │   ├── context/
-│   │   ├── layout/
-│   │   ├── pages/
+│   │   ├── components/  # Header, Banner, Footer, TopDoctors, etc.
+│   │   ├── context/     # AppContext
+│   │   ├── pages/       # Home, Doctors, About, Contact, Login, etc.
 │   │   ├── App.jsx
 │   │   └── main.jsx
 │   ├── .env
+│   ├── vercel.json
 │   ├── vite.config.js
 │   └── package.json
+│
+└── .gitignore
 ```
 
 ---
@@ -143,22 +166,25 @@ The system includes:
 | MongoDB    | NoSQL Database                |
 | Mongoose   | MongoDB ODM                   |
 | JWT        | Authentication                |
-| bcrypt     | Password Hashing              |
+| bcryptjs   | Password Hashing              |
 | Cloudinary | Image Storage                 |
 | Multer     | File Upload Handling          |
+| Stripe     | Payment Processing            |
+| Razorpay   | Alternate Payment Gateway     |
 | dotenv     | Environment Variables         |
 | cors       | Cross-Origin Resource Sharing |
 
-## 🔹 Frontend
+## 🔹 Frontend / Admin
 
-| Technology       | Purpose          |
-| ---------------- | ---------------- |
-| React.js         | Frontend Library |
-| Vite             | Build Tool       |
-| Tailwind CSS     | Styling          |
-| Axios            | API Requests     |
-| React Router DOM | Routing          |
-| React Toastify   | Notifications    |
+| Technology            | Purpose          |
+| ---------------------- | ---------------- |
+| React.js               | Frontend Library |
+| Vite                   | Build Tool       |
+| Tailwind CSS           | Styling          |
+| Axios                  | API Requests     |
+| React Router DOM       | Routing          |
+| React Toastify         | Notifications    |
+| Stripe.js / React Stripe | Checkout UI    |
 
 ---
 
@@ -169,17 +195,18 @@ The system includes:
 Make sure you have installed:
 
 * Node.js
-* MongoDB Atlas
+* MongoDB Atlas account
+* Cloudinary account
+* Stripe account (test mode keys)
 * Git
-* Cloudinary Account
 
 ---
 
 ## 🚀 Clone Repository
 
 ```bash
-git clone https://github.com/codingwithriha/doctor-appointment-booking-system.git
-cd doctor-appointment-booking-system
+git clone https://github.com/codingwithriha/Doctor-Appointment
+cd Doctor-Appointment
 ```
 
 ---
@@ -200,10 +227,12 @@ JWT_SECRET=your_secret_key
 
 CLOUDINARY_NAME=your_cloudinary_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+CLOUDINARY_SECRET_KEY=your_cloudinary_api_secret
 
 ADMIN_EMAIL=admin_email
 ADMIN_PASSWORD=admin_password
+
+STRIPE_SECRET_KEY=your_stripe_secret_key
 ```
 
 ## Run Backend Server
@@ -225,6 +254,7 @@ npm install
 
 ```env
 VITE_BACKEND_URL=http://localhost:4000
+VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
 ```
 
 ## Run Frontend
@@ -233,12 +263,14 @@ VITE_BACKEND_URL=http://localhost:4000
 npm run dev
 ```
 
+Runs on `http://localhost:5173`
+
 ---
 
-# 🛠️ Admin Portal Setup
+# 🛠️ Admin Panel Setup
 
 ```bash
-cd admin-portal
+cd admin
 npm install
 ```
 
@@ -248,11 +280,13 @@ npm install
 VITE_BACKEND_URL=http://localhost:4000
 ```
 
-## Run Admin Portal
+## Run Admin Panel
 
 ```bash
 npm run dev
 ```
+
+Runs on `http://localhost:5174` — supports both **Admin** and **Doctor** logins.
 
 ---
 
@@ -267,7 +301,7 @@ npm run dev
 
 ### 🩺 Doctor Flow
 
-1. Login as doctor
+1. Login as doctor (same portal, different tab)
 2. View appointments
 3. Accept or complete appointments
 4. Update profile information
@@ -275,9 +309,9 @@ npm run dev
 ### 👤 User Flow
 
 1. Register/Login
-2. Browse doctors
+2. Browse doctors by speciality
 3. Book appointments
-4. Make payment
+4. Pay securely via Stripe
 5. Cancel appointments if needed
 
 ---
@@ -286,45 +320,48 @@ npm run dev
 
 ## 👤 User Routes (`/api/user`)
 
-| Method | Endpoint              | Description         |
-| ------ | --------------------- | ------------------- |
-| POST   | `/register`           | Register new user   |
-| POST   | `/login`              | User login          |
-| GET    | `/get-profile`        | Get user profile    |
-| POST   | `/update-profile`     | Update user profile |
-| POST   | `/book-appointment`   | Book appointment    |
-| GET    | `/appointments`       | Get appointments    |
-| POST   | `/cancel-appointment` | Cancel appointment  |
-| POST   | `/make-payment`       | Payment endpoint    |
+| Method | Endpoint                  | Description             |
+| ------ | -------------------------- | ------------------------ |
+| POST   | `/register`                 | Register new user        |
+| POST   | `/login`                    | User login                |
+| GET    | `/get-profile`               | Get user profile          |
+| POST   | `/update-profile`            | Update user profile       |
+| POST   | `/book-appointment`          | Book appointment          |
+| GET    | `/appointments`               | Get user's appointments   |
+| POST   | `/cancel-appointments`        | Cancel appointment        |
+| POST   | `/create-payment-intent`      | Create Stripe payment intent |
+| POST   | `/confirm-payment`            | Confirm Stripe payment    |
+| POST   | `/stripe-webhook`              | Stripe webhook listener   |
+| GET    | `/doctor/:docId`               | Get single doctor info    |
 
 ---
 
 ## 🩺 Doctor Routes (`/api/doctor`)
 
 | Method | Endpoint                | Description           |
-| ------ | ----------------------- | --------------------- |
-| GET    | `/list`                 | Get doctors list      |
-| POST   | `/login`                | Doctor login          |
-| GET    | `/appointments`         | Doctor appointments   |
-| POST   | `/complete-appointment` | Complete appointment  |
-| POST   | `/cancel-appointment`   | Cancel appointment    |
-| GET    | `/dashboard`            | Dashboard metrics     |
-| GET    | `/profile`              | Doctor profile        |
-| POST   | `/update-profile`       | Update doctor profile |
+| ------ | ----------------------- | ---------------------- |
+| GET    | `/list`                  | Get doctors list        |
+| POST   | `/login`                  | Doctor login            |
+| POST   | `/appointment`             | Doctor's appointments   |
+| POST   | `/complete-appointment`    | Complete appointment    |
+| POST   | `/cancel-appointment`      | Cancel appointment      |
+| GET    | `/dashboard`               | Dashboard metrics       |
+| GET    | `/profile`                 | Doctor profile          |
+| POST   | `/update-profile`          | Update doctor profile   |
 
 ---
 
 ## 🛠️ Admin Routes (`/api/admin`)
 
 | Method | Endpoint               | Description          |
-| ------ | ---------------------- | -------------------- |
-| POST   | `/login`               | Admin login          |
-| POST   | `/add-doctor`          | Add doctor           |
-| GET    | `/all-doctors`         | Get all doctors      |
-| POST   | `/change-availability` | Change availability  |
-| GET    | `/appointments`        | Get all appointments |
-| POST   | `/cancel-appointment`  | Cancel appointment   |
-| GET    | `/dashboard`           | Dashboard analytics  |
+| ------ | ----------------------- | --------------------- |
+| POST   | `/login`                 | Admin login            |
+| POST   | `/add-doctor`             | Add doctor             |
+| POST   | `/all-doctor`             | Get all doctors        |
+| POST   | `/change-availability`    | Change availability    |
+| GET    | `/appointments`            | Get all appointments   |
+| POST   | `/cancel-appointments`     | Cancel appointment      |
+| GET    | `/dashboard`               | Dashboard analytics     |
 
 ---
 
@@ -345,34 +382,33 @@ npm run dev
 
 # 🚀 Deployment
 
-## Backend Deployment
+This project is deployed as **three independent Vercel projects**, each with its own root directory and environment variables.
 
-Recommended platforms:
+| Service | Platform | Root Directory |
+|---|---|---|
+| Backend API | Vercel | `backend/` |
+| Patient Frontend | Vercel | `frontend/` |
+| Admin/Doctor Panel | Vercel | `admin/` |
 
-* Render
-* Railway
-* Heroku
-* DigitalOcean
+**Live links:**
 
-## Frontend Deployment
-
-Recommended platforms:
-
-* Vercel
-* Netlify
-* AWS Amplify
+* 🌐 Frontend → https://doctor-appointment-prescripto-frontend.vercel.app
+* 🛠️ Admin Panel → https://doctor-appointment-prescripto-admin.vercel.app
+* ⚙️ Backend API → https://doctor-appointment-prescripto-backend.vercel.app
 
 ## Production Services
 
-* MongoDB Atlas
-* Cloudinary CDN
+* MongoDB Atlas — database hosting
+* Cloudinary — image CDN
+* Stripe — payment processing
+
+> ⚠️ When deploying, make sure the backend's CORS allow-list (`server.js`) includes the exact deployed frontend and admin URLs above, or API requests will be blocked.
 
 ---
 
 # 📌 Future Improvements
 
 * 📧 Email notifications for appointments
-* 💳 Stripe/PayPal payment integration
 * 📅 Doctor availability calendar
 * 📊 Advanced analytics dashboard
 * 🔍 Appointment filtering & pagination
@@ -402,6 +438,7 @@ Special thanks to:
 
 * MongoDB Atlas for cloud database services
 * Cloudinary for media storage
+* Stripe for payment infrastructure
 * The MERN Stack community for amazing open-source resources
 * React & Node.js ecosystems
 
